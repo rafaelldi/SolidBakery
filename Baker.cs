@@ -8,7 +8,7 @@ namespace SolidBakery
 
         public Baker()
         {
-            _paymentProcessor = new PaymentProcessor();
+            _paymentProcessor = PaymentProcessor.Create(true);
         }
 
         public void TakeOrder()

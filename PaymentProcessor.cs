@@ -2,20 +2,23 @@ using System;
 
 namespace SolidBakery
 {
-    public class PaymentProcessor
+    public abstract class PaymentProcessor
     {
-        public void ChargeFee(Order order)
-        {
-            var fee = order switch
+        public static PaymentProcessor Create(bool hasPaymentTerminal) =>
+            hasPaymentTerminal switch
+            {
+                true => new CardPaymentProcessor(),
+                false => new CashPaymentProcessor()
+            };
+        
+        public abstract void ChargeFee(Order order);
+
+        protected decimal GetOrderFee(Order order) =>
+            order switch
             {
                 Order.Bread => 5,
                 Order.Cookie => 1,
                 Order.Cake => 10,
             };
-
-            Console.WriteLine($"Your fee will be {fee}.");
-            Console.WriteLine("Press Enter to pay.");
-            Console.ReadKey();
-        }
     }
 }
