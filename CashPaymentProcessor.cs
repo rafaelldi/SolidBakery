@@ -4,7 +4,7 @@ namespace SolidBakery
 {
     public class CashPaymentProcessor : PaymentProcessor
     {
-        public override void ChargeFee(Order order)
+        public override void ChargeFee(Order order, CardType? cardType = null)
         {
             var fee = GetOrderFee(order);
 

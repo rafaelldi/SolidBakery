@@ -2,7 +2,7 @@ using System;
 
 namespace SolidBakery
 {
-    public class CardPaymentProcessor : PaymentProcessor
+    public class VisaPaymentProcessor : PaymentProcessor
     {
         public override void ChargeFee(Order order, CardType? cardType = null)
         {
@@ -11,12 +11,17 @@ namespace SolidBakery
                 throw new ArgumentNullException(nameof(cardType));
             }
 
+            if (!(cardType is CardType.Visa))
+            {
+                throw new ArgumentException();
+            }
+            
             var fee = GetOrderFee(order);
 
             Console.WriteLine($"Your fee will be {fee}.");
             Console.WriteLine("Press Enter to pay.");
             Console.ReadKey();
-
+            
             Console.WriteLine("Connecting...");
             Console.WriteLine("Charging money...");
             Console.WriteLine("Success");

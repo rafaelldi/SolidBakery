@@ -11,7 +11,7 @@ namespace SolidBakery
                 false => new CashPaymentProcessor()
             };
         
-        public abstract void ChargeFee(Order order);
+        public abstract void ChargeFee(Order order, CardType? cardType = null);
 
         protected decimal GetOrderFee(Order order) =>
             order switch
