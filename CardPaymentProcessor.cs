@@ -2,7 +2,7 @@ using System;
 
 namespace SolidBakery
 {
-    public class CardPaymentProcessor : PaymentProcessor
+    public class CardPaymentProcessor : PaymentProcessor, IStatisticsCalculator
     {
         public override void ChargeFee(Order order, CardType? cardType = null)
         {
@@ -21,6 +21,12 @@ namespace SolidBakery
             Console.WriteLine("Charging money...");
             Console.WriteLine("Success");
             Console.ReadKey();
+        }
+
+        public decimal CalculateStatistics()
+        {
+            var rnd = new Random();
+            return rnd.Next();
         }
     }
 }
