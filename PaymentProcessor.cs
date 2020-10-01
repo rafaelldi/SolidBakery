@@ -1,5 +1,3 @@
-using System;
-
 namespace SolidBakery
 {
     public abstract class PaymentProcessor

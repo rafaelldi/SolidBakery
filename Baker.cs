@@ -6,9 +6,9 @@ namespace SolidBakery
     {
         private readonly PaymentProcessor _paymentProcessor;
 
-        public Baker()
+        public Baker(PaymentProcessor paymentProcessor)
         {
-            _paymentProcessor = PaymentProcessor.Create(true);
+            _paymentProcessor = paymentProcessor;
         }
 
         public void TakeOrder()
